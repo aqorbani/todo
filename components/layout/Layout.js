@@ -15,7 +15,7 @@ function Layout({ children }) {
   return (
     <div className="container">
       <header>
-        <p>Botostart Todo App</p>
+        <p>Todo App</p>
         {status === "authenticated" ? (
           <button onClick={logOutHandler}>
             Logout
