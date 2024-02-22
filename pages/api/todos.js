@@ -1,7 +1,8 @@
 import User from "@/models/User";
 import connectDB from "@/utils/ConnectDB";
 import { sortTodos } from "@/utils/sortTodos";
-import { getSession } from "next-auth/react";
+import { authOptions } from "./auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 
 async function handler(req, res) {
   try {
@@ -13,7 +14,7 @@ async function handler(req, res) {
       .json({ status: "failed", message: "Error in connecting to DB" });
   }
 
-  const session = await getSession({ req });
+  const session = await getServerSession(req, res, authOptions);
   if (!session) {
     return res
       .status(401)

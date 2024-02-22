@@ -6,6 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const authOptions = {
   session: { strategy: "jwt" },
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       async authorize(credentials, req) {
